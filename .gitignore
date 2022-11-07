@@ -1,0 +1,16 @@
+# Directories
+scaffold/
+__pycache__/
+old/
+new/
+wandb/
+outputs/
+
+# File types
+scrap.ipynb
+*.json
+*.dat
+
+# Tests that are not working
+programs/tests/deterministic/test_22.daphne
+programs/tests/deterministic/test_22.truth
