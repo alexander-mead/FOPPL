@@ -5,15 +5,15 @@ wandb_run: False
 seed: None
 
 # Directory structure
-base_dir: ../Homework_4 # NOTE: This path should be relative to the daphne path
-daphne_dir: ../daphne   # NOTE: This path should be relative to the repository path
+base_dir: ../FOPPL    # NOTE: This path should be relative to the daphne path
+daphne_dir: ../daphne # NOTE: This path should be relative to the repository path
 
 # Tests and programs to run
-deterministic_tests: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
-probabilistic_tests: []
+deterministic_tests: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+probabilistic_tests: [1, 2, 3, 4, 5, 6, 7, 8]
 homework2_programs: []
 homework3_programs: []
-homework4_programs: []
+homework4_programs: [1, 2]
 
 # Compilation
 compile: False
