@@ -2,6 +2,9 @@
 import torch as tc
 import distributions as dists
 
+# Project imports
+from TTV import oneplanet
+
 def vector(*x):
     # NOTE: This must support both lists and vectors
     try:
@@ -164,6 +167,9 @@ primitives = {
     'gamma-params': (tc.tensor(1.), tc.tensor(1.)),
     'dirichlet-params': (tc.tensor([1., 1., 1.]),), # TODO: 3 concentration parameters is not general (H4Q3 specific)
     'flip-params': (tc.tensor(0.5),),
+
+    # TTV
+    'oneplanet': oneplanet,
 
 }
 

@@ -65,6 +65,7 @@ def eval(e, sig, l, rho={}, verbose=False):
                 cs.append(c)
 
             if type(e[0]) is list: # NOTE: This should never happen
+                print('List:', e[0])
                 raise ValueError('This list case should never happen!')
 
             elif (type(e[0]) is str) and (e[0] in rho.keys()): # User-defined function

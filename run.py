@@ -157,6 +157,8 @@ def run_all(cfg):
     if (seed != 'None'):
         tc.manual_seed(seed)
 
+    if inference == 'None': inference = None
+
     # Deterministic tests
     tests = cfg['deterministic_tests']
     run_tests(tests, mode=mode, test_type='deterministic', base_dir=base_dir, daphne_dir=daphne_dir, compile=compile, verbose=False)
@@ -188,6 +190,14 @@ def run_all(cfg):
         num_samples=num_samples, num_samples_per_step=num_samples_per_step, num_steps=num_steps, learning_rate=learning_rate, zero_b=zero_b,
         tmax=tmax, inference='VI', compile=compile, wandb_run=wandb_run, verbose=False)
     if wandb_run and (len(programs) != 0): wandb.finish()
+
+    # TTV
+    programs = cfg['TTV_programs']
+    #if wandb_run and (len(programs) != 0): wandb.init(project='HW4', entity='cs532-2022')
+    run_programs(programs, mode=mode, prog_set='TTV', base_dir=base_dir, daphne_dir=daphne_dir, 
+        num_samples=num_samples, tmax=tmax, inference=inference, 
+        compile=compile, wandb_run=wandb_run, verbose=False)
+    #if wandb_run and (len(programs) != 0): wandb.finish()
 
 if __name__ == '__main__':
     run_all()

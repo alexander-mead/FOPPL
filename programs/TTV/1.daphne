@@ -1,0 +1,22 @@
+(let [mass 0.
+      period (sample (normal 210. 1.))
+      eccentricity (sample (uniform-continuous 0. 0.15))
+      argument (sample (uniform-continuous 0. 360.))
+      theta (sample (uniform-continuous 0. 360.))
+      inclination 90.
+      longnode 0.
+      parameters (vector mass period eccentricity argument theta inclination longnode)
+      model (oneplanet parameters)
+      sigma 1.
+      data (vector 147.5596104087902, 357.55961040878896, 567.5596104087863, 777.5596104087812, 987.5596104087733, 1197.559610408765, 1407.5596104087556)
+      ]
+
+      (observe (normal (get model 0) sigma) (get data 0))
+      (observe (normal (get model 1) sigma) (get data 1))
+      (observe (normal (get model 2) sigma) (get data 2))
+      (observe (normal (get model 3) sigma) (get data 3))
+      (observe (normal (get model 4) sigma) (get data 4))
+      (observe (normal (get model 5) sigma) (get data 5))
+      (observe (normal (get model 6) sigma) (get data 6))
+
+      (vector mass period eccentricity argument theta inclination longnode))
