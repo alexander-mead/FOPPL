@@ -82,6 +82,7 @@ class Beta(tc.distributions.Beta):
         return [self.optim_concentration1.requires_grad_(), self.optim_concentration0.requires_grad_()]
 
     def log_prob(self, x):
+        # TODO: Error here, I think because concentration1, concentration0 are decorated properties
         self.concentration1 = positive_function(self.optim_concentration1)
         self.concentration0 = positive_function(self.optim_concentration0)
         return super().log_prob(x)
