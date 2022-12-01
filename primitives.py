@@ -146,9 +146,8 @@ primitives = {
     'normal-guide': dists.Normal,
     'beta-guide': dists.Beta,
     'exponential-guide': dists.Exponential,
-    'uniform-continuous-guide': dists.Gamma, # TODO: This is not a general map for uniform, but works for H4Q5!
-    #'uniform-continuous-guide': dists.Normal, # TODO: This is not a general map for uniform!
-    #'uniform-continuous-guide': dists.Beta, # TODO: This is not a general map for uniform!
+    #'uniform-continuous-guide': dists.Beta,
+    'uniform-continuous-guide': dists.Normal,
     'discrete-guide': dists.Categorical,
     'bernoulli-guide': dists.Bernoulli,
     'gamma-guide': dists.Gamma,
@@ -159,9 +158,8 @@ primitives = {
     'normal-params': (tc.tensor(0.), tc.tensor(1.)),
     'beta-params': (tc.tensor(1.), tc.tensor(1.)),
     'exponential-params': (tc.tensor(1.),),
-    'uniform-continuous-params': (tc.tensor(1.), tc.tensor(1.)), # NOTE: This maps to gamma and is not general
-    #'uniform-continuous-params': (tc.tensor(0.), tc.tensor(1.)), # NOTE: This maps to normal and is not general
-    #'uniform-continuous-params': (tc.tensor(1.), tc.tensor(1.)), # NOTE: This maps to beta and is not general
+    #'uniform-continuous-params': (tc.tensor(1.), tc.tensor(1.)),
+    'uniform-continuous-params': (tc.tensor(0.), tc.tensor(1.)),
     'discrete-params': (tc.tensor([1./3., 1./3., 1./3.]),), # TODO: 3 logits is not general (H4Q3 specific)
     'bernoulli-params': (tc.tensor(0.5),),
     'gamma-params': (tc.tensor(1.), tc.tensor(1.)),
