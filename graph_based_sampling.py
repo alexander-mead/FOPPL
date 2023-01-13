@@ -147,7 +147,7 @@ def Gibbs_samples(graph, num_samples, tmax=None, burn_frac=None, wandb_name=None
 
                 # Re-sample the primary node
                 resample_logP = l[resample_node+'_logP']
-                sig_here = deepcopy(sig); l_here = deepcopy(l) # NOTE: Take care to copy to avoid making pointers
+                sig_here, l_here = deepcopy(sig), deepcopy(l) # NOTE: Take care to copy to avoid making pointers
                 d = eval(graph.expressions[resample_node], sig_here, l_here) # Generate a new sample for the node NOTE: Careful! This will update sig, l
                 resample_logP_new = sig_here['logP']-sig['logP']
                 fixed_nodes = {resample_node: d}; fixed_probs = {resample_node: resample_logP_new}
@@ -370,8 +370,8 @@ def VI_evaluate_sample_node(node: str, exp: list, sig: dict, l: dict, variationa
     '''
     d = eval(exp[1], sig, l, verbose=verbose)
     c = variational.sample()
-    logP = d.log_prob(c) # NOTE: Detach not necessary here
-    logQ = variational.log_prob(c) # NOTE: Do not detach here
+    logP = d.log_prob(c)
+    logQ = variational.log_prob(c)
     sig['logQ'][node] = logQ
     sig['logW'] += logP-logQ.detach()
     return c, sig
@@ -430,7 +430,7 @@ def VI_samples(graph: graph, num_samples=int(1e3), num_samples_per_step=int(1e2)
         for _ in range(num_samples_per_step):
             sample, sig, _ = VI_evaluate_graph(graph, variationals, verbose=verbose)
             logW, logQ = sig['logW'], sig['logQ']
-            sample = flatten_sample(sample); logW = flatten_sample(logW)
+            sample, logW = flatten_sample(sample), flatten_sample(logW)
             if (bad_weight is not None) and (tc.isinf(logW) or tc.isnan(logW)): logW = bad_weight
             if rejection_sampling and (tc.isinf(logW) or tc.isnan(logW)): continue
             i += 1

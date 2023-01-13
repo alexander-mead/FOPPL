@@ -2,7 +2,6 @@
 import numpy as np
 import torch as tc
 from time import time
-import wandb
 
 # Project imports
 from evaluation_based_sampling import evaluate_program
