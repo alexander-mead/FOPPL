@@ -12,3 +12,21 @@ Inference algorithms:
 - Variational inference
 
 In future we would like to include the [inference compilation](https://arxiv.org/abs/1610.09900) algorithm within the context of graphical models. It should be possible to use the reverse graphical model to limit the number of neural networks required as surrogate link functions.
+
+To run, simply type
+
+```
+python run.py
+```
+
+edit the `config.yaml` (which uses [hydra](https://hydra.cc/docs/intro/)) to choose which probablistic programs (and tests) to run.
+
+Dependencies (`pip install numpy` etc.):
+
+```
+numpy
+pytorch
+hydra
+wandb
+ttvfast
+```
