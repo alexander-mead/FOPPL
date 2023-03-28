@@ -1,5 +1,7 @@
 # First-Order Probabilistic Programming Language (FOPPL)
 
+![image](https://user-images.githubusercontent.com/9140961/228379114-be6e12ce-d3b9-47c2-9d0f-32583eed197d.png)
+
 This repository contains a fully working [FOPPL](https://arxiv.org/abs/1809.10756) interpreter. A FOPPL program is one in which it is possible to convert the program into a finite graphical model, and conversely any statistical problem that can be written as a finite graphical model can be written in FOPPL. This code can ingest either the graph-based or evaluation-based outputs of [daphne](https://github.com/plai-group/daphne) and run a number of different inference algorithms to perform Bayesian posterior inference in *any* first-order probabilistic program. If your problem can be written in FOPPL (and therefore written as a graph) then this repository can perform Bayesian inference.
 
 The code uses [pytorch](https://pytorch.org/) primitives, and thus supports automatic differentiation. This ensures that inference algorithms that require derivatives (e.g., Hamiltonian Monte Carlo; Variational inference) are supported.
